@@ -106,4 +106,34 @@ if(saved){
     }
 }
 
-// End of script.js --></script> 
+// End of cart Functionality 
+// Array method practice - filter, map, reduce
+let count = 0;
+for (let i= 0 ; i <products.length ; i++){
+    count ++;
+}
+console.log(count); 
+products.forEach(product => {
+    if (product.stock >= 100){
+        console.log(product.name);
+    }
+});
+const highestProduct = products.reduce((acc, product) => {
+    return (!acc || product.price > acc.price) ? product : acc;
+}, null);
+console.log(`Highest priced product: ${highestProduct.name} at $${highestProduct.price}`);
+
+const totalquantity = products.reduce((sum, product) => sum + product.qty, 0);
+console.log(`Total quantity of all products: ${totalquantity}`);
+ const mapped = products.map(product => ({ name: product.name, price: product.price }));
+ console.log(mapped);
+
+ const filtered = products.filter(product => product.price >= 500);
+    console.log(filtered); 
+ const find =products.find(product => product.rating > 4.5);
+ console.log(find.name);
+ const some = products.some(product => product.stock < 0 );
+    console.log(some);
+    const every = products.every(product => product.rating <4 );
+    console.log(every);
+
